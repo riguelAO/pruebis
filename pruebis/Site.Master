@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="pruebis.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Atencion EPIS</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body style="background-image: url(https://www.uandina.edu.pe/wp-content/uploads/2021/02/home_slider_bg.jpg)">
+    <form runat="server" >
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background: rgba(25,77,132,1)">
+            
+            <div class="container">
+                
+                <div class="navbar-header">
+                                        
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        
+                    </button>
+                    
+                    <img src="https://www.uandina.edu.pe/wp-content/uploads/2019/10/logo-light.png" alt="Alternate Text" href="~/Default" style="background:#ffff ;width:150px; height: 50px; margin:10px">
+                    
+
+                </div>
+                <div class="navbar-collapse collapse" style="margin:auto">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server"  style ="color : #1dc0de" href="~/">Inicio</a></li>
+                        <li><a runat="server" style ="color : #1dc0de" href="~/About">Acerca de</a></li>
+                        <li><a runat="server"  style ="color : #1dc0de" href="~/Contact">Contacto</a></li>
+                        <li><a runat="server"  style ="color : #1dc0de" href="~/Preguntas">Preguntas Frecuentes</a></li>
+                        <li><a class="dropdown-toggle" data-toggle="dropdown" style ="color : #1dc0de" href="#">Atencion a Cliente<span class="caret"></span></a>
+                        <ul class="dropdown-menu" data-menu="dropdown" class="caret">
+                        <li><a href="#" style ="color : #1dc0de" class="menu-solicitud">Tramites</a>
+                            <ul>
+						<li><a href="CambioHorario.aspx"style ="color : #1dc0de" >Cambio de horario</a></li>
+						<li><a href=""style ="color : #1dc0de" >Cambio de Curso</a></li>
+					</ul>
+                            </li>
+                         <li><a href="#" style ="color : #1dc0de" class="menu-solicitud">Solicitudes</a>
+                            <ul>
+						<li><a href="Formulario web3.aspx" style ="color : #1dc0de" >Tesis</a></li>
+						<li><a href="" style ="color : #1dc0de" >Practicas Pre-Profesionales</a></li>
+						<li><a href="" style ="color : #1dc0de" >Justificaciones</a>
+							<ul>
+								<li><a href="Formulario web2.aspx">Justificacion Medica</a></li>
+								<li><a href="">Otra Justificacion</a></li>
+							</ul>
+						</li>
+					</ul>
+                            </li>
+                            <li><a href="#" style ="color : #1dc0de" class="menu-solicitud">Quejas</a> </li>
+                        </ul>
+                        </li>
+
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" style="color : #1dc0de" href="~/Account/Login">Iniciar sesión</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" style="color : #1dc0de" title="Manage your account">Hola. <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p><strong style="color:#fff">&copy; <%: DateTime.Now.Year %> - Ingenieria de Software Grupo C</strong></p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
